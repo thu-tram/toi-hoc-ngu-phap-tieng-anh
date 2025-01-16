@@ -1,0 +1,362 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hoàn thành - Tôi học ngữ pháp Tiếng Anh</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Tôi học ngữ pháp Tiếng Anh</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="present-perfect-thì-hiện-tại-hoàn-thành"><a class="header" href="#present-perfect-thì-hiện-tại-hoàn-thành">Present Perfect (Thì hiện tại hoàn thành)</a></h1>
+<p>FORM</p>
+<p>[has/have + past participle]</p>
+<p>Ví dụ:</p>
+<ul>
+<li>You have seen that movie many times.</li>
+<li>Have you seen that movie many times?</li>
+<li>You have not seen that movie many times.</li>
+</ul>
+<h2 id="một-thời-điểm-không-xác-định-trước-thời-điểm-hiện-tại"><a class="header" href="#một-thời-điểm-không-xác-định-trước-thời-điểm-hiện-tại">Một thời điểm không xác định trước thời điểm hiện tại</a></h2>
+<p><img src="img/image.png" alt="alt text" /></p>
+<p>Chúng ta dùng thì hiện tại hoàn thành để diễn tả một hành động xảy ra tại một thời điểm không xác định trước thời điểm hiện tại. Thời điểm chính xác không quan trọng. Bạn KHÔNG THỂ dùng thì hiện tại hoàn thành với những từ chỉ một thời điểm xác định, chẳng hạn như: yesterday, one year ago, last week, when I was a child, when I lived in Japan, at that moment, that day, one day, v.v... Chúng ta CÓ THỂ dùng thì hiện tại hoàn thành với những từ chỉ thời điểm không xác định, chẳng hạn như: ever, never, once, many times, several times, before, so far, already, yet, v.v...</p>
+<p> Ví dụ:</p>
+<ul>
+<li>I have seen that movie twenty times.</li>
+<li>I think I have met him once before.</li>
+<li>There have been many earthquakes in California.</li>
+<li>People have traveled to the Moon.</li>
+<li>People have not traveled to Mars.</li>
+<li>Have you read the book yet?</li>
+<li>Nobody has ever climbed that mountain.</li>
+</ul>
+<p>A: Has there ever been a war in the United States?</p>
+<ul>
+<li>
+<p>B: Yes, there</p>
+</li>
+<li>
+<p>has been</p>
+</li>
+<li>
+<p>a war in the United States.</p>
+</li>
+</ul>
+<p>Khái niệm "thời điểm không xác định" có thể sẽ rất khó hiểu đối với những người học tiếng Anh. Do đó cách tốt nhất là liên hệ thì hiện tại hoàn thành với những chủ đề sau:</p>
+<h3 id="chỦ-ĐỀ-1-kinh-nghiỆm"><a class="header" href="#chỦ-ĐỀ-1-kinh-nghiỆm">CHỦ ĐỀ 1: KINH NGHIỆM </a></h3>
+<p>Bạn có thể dùng thì hiện tại hoàn thành để diễn tả kinh nghiệm của mình. Cũng giống như khi bạn nói: "I have the experience of . . ." Bạn cũng có thể dùng thì này để nói rằng mình chưa từng có những kinh nghiệm như vậy. Thì hiện tại hoàn thành không được dùng để mô tả một hiện tượng xác định nào đó.</p>
+<p>Ví dụ:</p>
+<p>I have been to France.</p>
+<ul>
+<li><em>Câu này có nghĩa là bạn đã có kinh nghiệm sống ở Pháp. Có thể bạn đã ở đó 1 lần, hoặc một vài lần.</em></li>
+</ul>
+<p>I have been to France three times.</p>
+<ul>
+<li><em>Bạn có thể thêm vào số lần ở cuối câu.</em></li>
+</ul>
+<p>I have never been to France.</p>
+<ul>
+<li>
+<p><em>Câu này có nghĩa là bạn chưa từng có kinh nghiệm đến Pháp.</em></p>
+</li>
+<li>
+<p>I think I have seen that movie before.</p>
+</li>
+<li>
+<p>He has never traveled by train.</p>
+</li>
+<li>
+<p>Joan has studied two foreign languages.</p>
+</li>
+</ul>
+<p>A: Have you ever met him?</p>
+<ul>
+<li>
+<p>B: No, I</p>
+</li>
+<li>
+<p>have</p>
+</li>
+<li>
+<p>not</p>
+</li>
+<li>
+<p>met</p>
+</li>
+<li>
+<p>him.</p>
+</li>
+</ul>
+<h3 id="chỦ-ĐỀ-2-nhỮng-thay-ĐỔi-theo-thỜi-gian"><a class="header" href="#chỦ-ĐỀ-2-nhỮng-thay-ĐỔi-theo-thỜi-gian">CHỦ ĐỀ 2: NHỮNG THAY ĐỔI THEO THỜI GIAN</a></h3>
+<p>Chúng ta thường dùng thì hiện tại hoàn thành để nói về những thay đổi xảy ra trong một khoảng thời gian.</p>
+<p>Ví dụ:</p>
+<ul>
+<li>You have grown since the last time I saw you.</li>
+<li>The government has become more interested in arts education.</li>
+<li>Japanese has become one of the most popular courses at the university since the Asian studies program was established.</li>
+<li>My English has really improved since I moved to Australia.</li>
+</ul>
+<h3 id="chỦ-ĐỀ-3-nhỮng-thÀnh-tỰu-thÀnh-quẢ-ĐÃ-ĐẠt-ĐƯỢc"><a class="header" href="#chỦ-ĐỀ-3-nhỮng-thÀnh-tỰu-thÀnh-quẢ-ĐÃ-ĐẠt-ĐƯỢc">CHỦ ĐỀ 3: NHỮNG THÀNH TỰU, THÀNH QUẢ ĐÃ ĐẠT ĐƯỢC</a></h3>
+<p>Chúng ta thường dùng thì hiện tại hoàn thành để liệt kê những thành tựu mà một cá nhân hay loài người đã đạt được. Bạn không thể đề cập đến một thời điểm xác định.</p>
+<p>Ví dụ:</p>
+<ul>
+<li>Man has walked on the Moon.</li>
+<li>Our son has learned how to read.</li>
+<li>Doctors have cured many deadly diseases.</li>
+<li>Scientists have split the atom.</li>
+</ul>
+<h3 id="chỦ-ĐỀ-4-hÀnh-ĐỘng-chƯa-hoÀn-thÀnh-mÀ-bẠn-Đang-mong-ĐỢi"><a class="header" href="#chỦ-ĐỀ-4-hÀnh-ĐỘng-chƯa-hoÀn-thÀnh-mÀ-bẠn-Đang-mong-ĐỢi">CHỦ ĐỀ 4: HÀNH ĐỘNG CHƯA HOÀN THÀNH MÀ BẠN ĐANG MONG ĐỢI</a></h3>
+<p>Chúng ta thường dùng thì hiện tại hoàn thành để nói về một hành động mà chúng ta mong đợi hoặc không mong đợi. Dùng thì hiện tại hoàn thành để thể hiện rằng chúng ta vẫn còn đang chờ đợi hành động đó xảy ra.</p>
+<p>Ví dụ:</p>
+<ul>
+<li>James has not finished his homework yet.</li>
+<li>Susan hasn't mastered Japanese, but she can communicate.</li>
+<li>Bill has still not arrived.</li>
+<li>The rain hasn't stopped.</li>
+</ul>
+<h3 id="chỦ-ĐỀ-5-nhiỀu-hÀnh-ĐỘng-xẢy-ra-Ở-nhỮng-thỜi-ĐiỂm-khÁc-nhau"><a class="header" href="#chỦ-ĐỀ-5-nhiỀu-hÀnh-ĐỘng-xẢy-ra-Ở-nhỮng-thỜi-ĐiỂm-khÁc-nhau">CHỦ ĐỀ 5: NHIỀU HÀNH ĐỘNG XẢY RA Ở NHỮNG THỜI ĐIỂM KHÁC NHAU </a></h3>
+<p>Chúng ta cũng có thể dùng thì hiện tại hoàn thành để nói về nhiều hành động khác nhau xảy ra ở quá khứ tại những thời điểm khác nhau. Thì hiện tại hoàn thành có ý nghĩa là quá trình đó vẫn chưa kết thúc và có thể còn nhiều hành động khác nữa.</p>
+<p>Ví dụ:</p>
+<ul>
+<li>The army has attacked that city five times.</li>
+<li>I have had four quizzes and five tests so far this semester.</li>
+<li>We have had many major problems while working on this project.</li>
+<li>She has talked to several specialists about her problem, but nobody knows why she is sick.</li>
+</ul>
+<p>Thì hiện tại hoàn thành và những từ chỉ thời gian</p>
+<p>Khi chúng ta dùng thì hiện tại hoàn thành thì có nghĩa là có một điều gì đó đã xảy ra ở một thời điểm trong cuộc sống của chúng ta trước thời điểm hiện tại. Lưu ý là thời điểm chính xác lúc hành động xảy ra không quan trọng.</p>
+<p><img src="img/image-1.png" alt="alt text" /></p>
+<p>Đôi khi chúng ta muốn giới hạn lại khoảng thời gian của những hành động này, chúng ta có thể dùng những thành ngữ chỉ thời gian như sau: in the last week, in the last year, this week, this month, so far, up to now v.v...</p>
+<p><img src="img/image-2.png" alt="alt text" /></p>
+<p>Ví dụ:</p>
+<ul>
+<li>Have you been to Mexico in the last year?</li>
+<li>I have seen that movie six times in the last month.</li>
+<li>They have had three tests in the last week.</li>
+<li>She graduated from university less than three years ago. She has worked for three different companies so far.</li>
+<li>My car has broken down three times this week.</li>
+</ul>
+<p>LƯU Ý</p>
+<p>"Last year" và "in the last year" có ý nghĩa rất khác nhau. "Last year" có nghĩa là vào năm trước, nó được xem là một thời điểm xác định và phải dùng thì quá khứ đơn. Còn "in the last year" có nghĩa là một khoảng thời gian kéo dài từ 365 ngày trước đây cho đến bây giờ. Nó không được xem là một thời điểm xác định và do đó cần phải dùng thì hiện tại hoàn thành. </p>
+<p>Ví dụ:</p>
+<p>I went to Mexico last year. (Tôi đã đến Mexico vào năm trước được tính trên lịch so với năm nay, ví dụ nếu năm nay là năm 2011 thì người nói câu này muốn nói rằng mình đã đến Mexico vào năm 2010, và "năm 2010" được xem là một thời điểm xác định)</p>
+<p>I have been to Mexico in the last year. (Tôi đã đến Mexico ít nhất 1 lần tại một thời điểm nào đó trong khoảng thời gian tính từ 365 ngày trước đây cho đến bây giờ, và khoảng thời gian này không phải là một thời điểm xác định)</p>
+<h2 id="kéo-dài-từ-quá-khứ-cho-đến-hiện-tại-non-continuous-verb"><a class="header" href="#kéo-dài-từ-quá-khứ-cho-đến-hiện-tại-non-continuous-verb">Kéo dài từ quá khứ cho đến hiện tại (Non-Continuous Verb)</a></h2>
+<p><img src="img/image-3.png" alt="alt text" /></p>
+<p>Với các Non-Continuous Verb và những Mixed Verb với nghĩa non-continuous, chúng ta dùng thì hiện tại hoàn thành để diễn tả những hành động xảy ra trong quá khứ và tiếp tục kéo dài cho đến thời điểm hiện tại. "For five minutes," "for two weeks," và "since Tuesday" đều có thể được dùng với thì Present Perfect.</p>
+<p>Ví dụ:</p>
+<ul>
+<li>I have had a cold for two weeks.</li>
+<li>She has been in England for six months.</li>
+<li>Mary has loved chocolate since she was a little girl.</li>
+</ul>
+<p>Mặc dù cách dùng này giới hạn trong những động từ non-continuous và mixed verb với ý nghĩa non-continuous, các từ như "live," "work," "teach," và "study" đôi khi có thể được dùng theo cách này mặc dù chúng không phải là các Non-Continuous Verb.</p>
+<h3 id="cách-đặt-adverb"><a class="header" href="#cách-đặt-adverb">Cách đặt Adverb</a></h3>
+<p>Những ví dụ dưới đây mô tả các đặt các adverb như: always, only, never, ever, still, just, v.v... vào một câu ở thì hiện tại hoàn thành:</p>
+<p>Ví dụ:</p>
+<ul>
+<li>You have only seen that movie one time.</li>
+<li>Have you only seen that movie one time?</li>
+</ul>
+<h3 id="chỦ-ĐỘng--bỊ-ĐỘng"><a class="header" href="#chỦ-ĐỘng--bỊ-ĐỘng">CHỦ ĐỘNG / BỊ ĐỘNG</a></h3>
+<p>Ví dụ:</p>
+<ul>
+<li>Many tourists have visited that castle. <em>Chủ động</em></li>
+<li>That castle has been visited by many tourists. <em>Bị động</em></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../word-level/dong-tu/hien-tai-tiep-dien.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../word-level/dong-tu/hien-tai-hoan-thanh-tiep-dien.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../word-level/dong-tu/hien-tai-tiep-dien.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../word-level/dong-tu/hien-tai-hoan-thanh-tiep-dien.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

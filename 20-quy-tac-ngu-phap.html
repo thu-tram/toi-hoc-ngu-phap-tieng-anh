@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>20 quy tắc ngữ pháp - Tôi học ngữ pháp Tiếng Anh</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Tôi học ngữ pháp Tiếng Anh</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="20-quy-tắc-ngữ-pháp-cần-nhớ"><a class="header" href="#20-quy-tắc-ngữ-pháp-cần-nhớ">20 Quy Tắc Ngữ Pháp Cần Nhớ</a></h1>
+<p>Sau đây là 20 quy tắc ngữ pháp giúp bạn tránh được các lỗi trong ngữ pháp tiếng Anh.</p>
+<p><strong>1. Một câu bắt đầu bằng một chữ cái in hoa và kết thúc bằng một dấu chấm câu, một dấu hỏi hoặc một dấu chấm than.</strong></p>
+<ul>
+<li><strong><em>T</em></strong> <em>he fat cat sat on the mat <strong>.</strong></em></li>
+<li><em><strong>W</strong> here do you live <strong>?</strong></em></li>
+<li><em><strong>M</strong> y dog is very clever <strong>!</strong></em></li>
+</ul>
+<p><strong>2. Thứ tự của một câu khẳng định cơ bản là Subject-Verb-Object (Chủ ngữ – Động từ – Tân ngữ).</strong></p>
+<p><strong>Câu phủ định và câu hỏi có thể có thứ tự khác nhau.</strong></p>
+<ul>
+<li><strong><em>John loves Mary</em></strong> <em>.</em></li>
+<li><strong><em>They were driving their car</em></strong> <em>to Bangkok.</em></li>
+</ul>
+<p><strong>3. Mỗi câu có phải có một chủ ngữ và một động từ, tân ngữ có thể không cần thiết phải có. Lưu ý rằng một câu mệnh lệnh có thể chỉ có động từ nhưng chủ ngữ đã được ngụ ý hiểu ngầm.</strong></p>
+<ul>
+<li><strong><em>John teaches</em></strong> <em>.</em></li>
+<li><strong><em>John teaches</em></strong> <em>English.</em></li>
+<li><em>Stop! (i.e. <strong>You stop</strong>!)</em></li>
+</ul>
+<p><strong>4. Chủ ngữ và động từ phải hòa hợp với nhau về số lượng, tức là một chủ ngữ số ít thì cần có một động từ chia ở dạng số ít và một chủ ngữ số nhiều cần đi với một động từ ở dạng số nhiều.</strong></p>
+<ul>
+<li><em>John <strong>works</strong> in London.</em></li>
+<li><em>That monk <strong>eats</strong> once a day.</em></li>
+<li><em>John and Mary <strong>work</strong> in London.</em></li>
+<li><em>Most people <strong>eat</strong> three meals a day.</em></li>
+</ul>
+<p><strong>5. Khi hai chủ ngữ số ít được nối với nhau bằng or thì sẽ dùng động từ ở dạng số ít. Điều này tương tự nếu các chủ ngữ nối với nhau bằng</strong> <strong><em>either/or</em> và <em>neither/nor</em>.</strong></p>
+<ul>
+<li><em>John or Mary <strong>is</strong> coming tonight.</em></li>
+<li><em>Either coffee or tea <strong>is</strong> fine.</em></li>
+<li><em>Neither John nor Mary <strong>was</strong> late.</em></li>
+</ul>
+<p><strong>6. Tính từ thường đứng trước danh từ ( ngoại trừ trường hợp một động từ làm tách riêng tính từ ra khỏi danh từ.</strong></p>
+<ul>
+<li><em>I have a <strong>big</strong> dog.</em></li>
+<li><em>She married a <strong>handsome Italian</strong> man.</em></li>
+<li><em>(Her husband is <strong>rich</strong>.)</em></li>
+</ul>
+<p><strong>7. Khi trong câu có hai hoặc nhiều tính từ kết hợp với nhau thì thứ tự sẽ là: Tính từ chỉ quan điểm + Tính từ chỉ thực tế + Danh từ</strong></p>
+<p>Fact adjective (tính từ thực tế) mô tả những thứ như màu sắc, hoa văn, hình dạng, tuổi tác, chất liệu, xuất xứ, v.v. Đây là những thứ thường được mọi người đồng ý và chấp nhận là luôn đúng. Opinion adjective (tính từ quan điểm) mô tả những gì chúng ta nghĩ hoặc cách chúng ta cảm nhận về ai đó hoặc điều gì đó. Những suy nghĩ và cảm nhận này là khác nhau ở mỗi người nên chúng là opinion (ý kiến) ​​chứ không phải fact (sự thật).</p>
+<ul>
+<li><em>I saw a <strong>nice French</strong> table.</em></li>
+<li><em>That was an <strong>interesting Shakespearian</strong> play.</em></li>
+</ul>
+<p><strong>8. Danh từ tập hợp (e.g. committee, company, board of directors) được coi như ở dạng số ít hoặc số nhiều. Trong tiếng Anh-Anh thì danh từ tập hợp được coi như ở dạng số nhiều và cần đi theo với động từ và đại từ ở dạng số nhiều.</strong> <strong>Trong tiếng Anh-Mỹ thì một danh từ tập hợp thường được coi như ở dạng số ít và cần đi theo với động từ và đại từ ở dạng số ít.</strong></p>
+<ul>
+<li><em>The committee <strong>are</strong> having sandwiches for lunch. Then <strong>they</strong> will go to London. (typically BrE)</em></li>
+<li><em>The BBC <strong>have</strong> changed <strong>their</strong> logo. (typically BrE)</em></li>
+<li><em>My family <strong>likes</strong> going to the zoo. (typically AmE)</em></li>
+<li><em>CNN <strong>has</strong> changed <strong>its</strong> logo. (typically AmE)</em></li>
+</ul>
+<p><strong>9. Các từ <em>its</em> và <em>it's</em> là hai từ khác nhau và có nghĩa khác nhau.</strong></p>
+<ul>
+<li><em>The dog has hurt <strong>its</strong> leg.</em></li>
+<li><em>He says <strong>it's</strong> two o'clock.</em></li>
+</ul>
+<p><strong>10. Các từ <em>your</em> và <em>you're</em> là hai từ khác nhau và có nghĩa khác nhau.</strong></p>
+<ul>
+<li><em>Here is <strong>your</strong> coffee.</em></li>
+<li><em><strong>You're</strong> looking good.</em></li>
+</ul>
+<p><strong>11. Các từ there, their và they're là ba từ khác nhau và có nghĩa khác nhau.</strong></p>
+<ul>
+<li><strong><em>There</em></strong> <em>was nobody at the party.</em></li>
+<li><em>I saw <strong>their</strong> new car.</em></li>
+<li><em>Do you think <strong>they're</strong> happy?</em></li>
+</ul>
+<p><strong>12. Từ viết tắt <em>he's</em> có thể là dạng viết tắt của <em>he is</em> hoặc <em>he has</em>. Tương tự, _she's_có thể là dạng viết tắt của <em>she is</em> hoặc <em>she has</em>, và _it's_có thể là dạng viết tắt của <em>it is</em> hoặc <em>it has</em>, và _John's_có thể là dạng viết tắt của <em>John is</em> hoặc <em>John has</em>.</strong></p>
+<ul>
+<li><strong><em>He is</em></strong> <em>working</em></li>
+<li><em><strong>He has</strong> finished.</em></li>
+<li><em><strong>She is</strong> here.</em></li>
+<li><em><strong>She has</strong> left.</em></li>
+<li><em><strong>John is</strong> married.</em></li>
+<li><em><strong>John has</strong> divorced his wife.</em></li>
+</ul>
+<p><strong>13. Từ viết tắt _he'd_có thể là dạng viết tắt của <em>he had</em> hoặc <em>he would</em>. Tương tự, _they'd_có thể là dạng viết tắt của <em>they had</em> hoặc <em>they would</em>.</strong></p>
+<ul>
+<li><strong><em>He had</em></strong> <em>eaten when I arrived.</em></li>
+<li><strong><em>He would</em></strong> <em>eat more if possible.</em></li>
+<li><strong><em>They had</em></strong> <em>already finished.</em></li>
+<li><strong><em>They would</em></strong> <em>come if they could.</em></li>
+</ul>
+<p><strong>14. Danh từ riêng sẽ được viết hoa ở chữ cái đầu tiên. Một danh từ riêng là tên của cái gì đó, ai đó, ví dụ Josef, Mary, Russia, China, British Broadcasting Corporation, English.</strong></p>
+<ul>
+<li><em>We have written to <strong>Mary</strong>.</em></li>
+<li><em>Is <strong>China</strong> in <strong>Asia</strong>?</em></li>
+<li><em>Do you speak <strong>English</strong>?</em></li>
+</ul>
+<p><strong>15. Tính từ riêng sẽ được viết hoa ở chữ cái đầu tiên. Tính từ riêng được tạo ra từ danh từ riêng. Ví dụ: Germany → German, Orwell → Orwellian, Machiavelli → Machiavellian</strong>.</p>
+<ul>
+<li><em>London is an <strong>English</strong> town.</em></li>
+<li><em>Who is the <strong>Canadian</strong> prime minister?</em></li>
+<li><em>Which is your favourite <strong>Shakespearian</strong> play?</em></li>
+</ul>
+<p><strong>16. Dùng mạo từ không xác định <em>a/an</em> cho các danh từ đếm được nói chung. Dùng mạo từ xác định <em>the</em> cho những danh từ đếm được và được ngụ ý và dùng cho tất cả danh từ không đếm được</strong>.</p>
+<ul>
+<li><em>I saw <strong>a bird</strong> and <strong>a balloon</strong> in the sky. <strong>The bird</strong> was blue and <strong>the balloon</strong> was yellow.</em></li>
+<li><em>He always saves some of <strong>the money</strong> that he earns.</em></li>
+</ul>
+<p><strong>17. Dùng mạo từ không xác định <em>a</em> với những từ bắt đầu bằng một phụ âm. Dùng mạo từ không xác định <em>an</em> với những từ bắt đầu bằng một nguyên âm hoặc được phát âm như một nguyên âm.</strong></p>
+<ul>
+<li><strong><em>a c</em></strong> <em>at, <strong>a g</strong> ame of golf, <strong>a h</strong> uman endeavour, <strong>a F</strong> renchman, <strong>a u</strong> niversity ( <strong>you</strong>-ni-ver-si-ty)</em></li>
+<li><em><strong>an a</strong> pple, <strong>an e</strong> asy job, <strong>an i</strong> nteresting story, <strong>an o</strong> ld man, <strong>an u</strong> mbrella, <strong>an h</strong> onorable man ( <strong>on</strong>-o-ra-ble)</em></li>
+</ul>
+<p><strong>18. Dùng <em>many</em> hoặc <em>few</em> với những danh từ đếm được. Dùng <em>much/a lot</em> hoặc <em>little</em> cho những danh từ không đếm được.</strong></p>
+<ul>
+<li><strong><em>How many dollars</em></strong> <em>do you have?</em></li>
+<li><strong><em>How much money</em></strong> <em>do you have?</em></li>
+<li><em>There are <strong>a few cars</strong> outside.</em></li>
+<li><em>There is <strong>little traffic</strong> on the roads.</em></li>
+</ul>
+<p><strong>19. Để chỉ sự sở hữu (ai đó sở hữu cái gì đó) thì ta dùng một dấu sở hữu cách ‘ <em>+ s</em> cho người hoặc vật sở hữu số ít, và dùng <em>s + một dấu sở hữu cách ‘</em> cho người hoặc vật sở hữu số nhiều.</strong></p>
+<ul>
+<li><em>The boy <strong>‘s</strong> dog.</em> (one boy)</li>
+<li><em>The boy <strong>s'</strong> dog.</em> (two or more boys)</li>
+</ul>
+<p><strong>20. Thông thường, dùng thể chủ động (Cats eat fish) được ưu tiên hơn so với dùng thể bị động (Fish are eaten by cats).</strong></p>
+<ul>
+<li>We <strong><em>use</em></strong> <em>active in preference to passive.</em></li>
+<li><em>Active <strong>is used</strong> in preference to passive.</em></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="bat-dau.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="word-level/parts-of-speech.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="bat-dau.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="word-level/parts-of-speech.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

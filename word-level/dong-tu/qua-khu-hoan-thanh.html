@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hoàn thành - Tôi học ngữ pháp Tiếng Anh</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Tôi học ngữ pháp Tiếng Anh</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>https://www.facebook.com/notes/733207490603882/</p>
+<p>Past Perfect (Thì quá khứ hoàn thành)</p>
+<p>FORM</p>
+<p>[had + past participle]</p>
+<p>Ví dụ:</p>
+<ul>
+<li>You had studied English before you moved to New York.</li>
+<li>Had you studied English before you moved to New York?</li>
+<li>You had not studied English before you moved to New York.</li>
+</ul>
+<p>CÁCH DÙNG:</p>
+<p>1. Một hành động được hoàn thành trước một hành động khác trong quá khứ.</p>
+<p><img src="https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/453973176_8008512002563195_2847840519794567219_n.jpg?_nc_cat=103&amp;ccb=1-7&amp;_nc_sid=350b3d&amp;_nc_ohc=ZUrG2jyFfb4Q7kNvgHZW8eS&amp;_nc_zt=23&amp;_nc_ht=scontent.fhan17-1.fna&amp;_nc_gid=AT_6FzCmwitqkC6alU_Vurd&amp;oh=00_AYAr424-5DEpucl2mEUzNWDRXdxFtpS6YXhtusE8Cc9GsQ&amp;oe=6761C634" alt="image" /></p>
+<p>Thì quá khứ hoàn thành diễn tả một hành động xảy ra trước một hành động khác trong quá khứ. Nó cũng có thể dùng để diễn tả một hành động xảy ra trước một thời điểm nhất định trong quá khứ. </p>
+<p>Ví dụ:</p>
+<ul>
+<li>I had never seen such a beautiful beach before I went to Kauai.</li>
+<li>I did not have any money because I had lost my wallet.</li>
+<li>Tony knew Istanbul so well because he had visited the city several times.</li>
+<li>Had Susan ever studied Thai before she moved to Thailand?</li>
+<li>She only understood the movie because she had read the book.</li>
+<li>Kristine had never been to an opera before last night.</li>
+<li>We were not able to get a hotel room because we had not booked in advance.</li>
+</ul>
+<p>A: Had you ever visited the U.S. before your trip in 2006?</p>
+<ul>
+<li>
+<p>B: Yes, I</p>
+</li>
+<li>
+<p>had been</p>
+</li>
+<li>
+<p>to the U.S. once before.</p>
+</li>
+</ul>
+<p>2. Một diễn tiến xảy ra trước một điều nào đó trong quá khứ (Non-Continuous Verb)</p>
+<p><img src="https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/454193628_8008511979229864_2157097502542084085_n.jpg?_nc_cat=100&amp;ccb=1-7&amp;_nc_sid=350b3d&amp;_nc_ohc=B8D_2N44E_IQ7kNvgHutJIT&amp;_nc_zt=23&amp;_nc_ht=scontent.fhan17-1.fna&amp;_nc_gid=AT_6FzCmwitqkC6alU_Vurd&amp;oh=00_AYDRNrIkH_VzvErfTEeJxGkoECwVJb9wp_e6Ly3tA0lZaQ&amp;oe=6761C9F3" alt="image" /></p>
+<p>Với Non-Continuous Verb và một số Mixed Verb được dùng với nghĩa non-continuous, chúng ta dùng thì quá khứ hoàn thành để diễn tả một điều bắt đầu trong quá khứ và tiếp tục diễn ta cho đến khi có một hành động khác xảy ra trong quá khứ.</p>
+<p>Ví dụ:</p>
+<ul>
+<li>We had had that car for ten years before it broke down.</li>
+<li>By the time Alex finished his studies, he had been in London for over eight years.</li>
+<li>They felt bad about selling the house because they had owned it for more than forty years.</li>
+</ul>
+<p>Mặc dù cách dùng trên thường chỉ giới hạn trong các động từ Non-Continuous và các nghĩa non-continuous của các mixed verb, nhưng đôi khi ta cũng có thể dùng các từ "live," "work," "teach," và "study" mặc dù chúng không phải là các động từ Non-Continuous.</p>
+<p>QUAN TRỌNG: Những thời điểm xác định trong thì quá khứ hoàn thành.</p>
+<p><img src="https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/454232624_8008512005896528_2990719381343532110_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=350b3d&amp;_nc_ohc=hY7z4J3vq84Q7kNvgE-8132&amp;_nc_zt=23&amp;_nc_ht=scontent.fhan17-1.fna&amp;_nc_gid=AT_6FzCmwitqkC6alU_Vurd&amp;oh=00_AYBuheSek_eYYRWdA2bZgTVMNJ8jbw8vRZOIYRnFfBTmtg&amp;oe=6761A21E" alt="image" /></p>
+<p>Không giống như thì hiện tại hoàn thành, chúng ta có thể dùng các từ hoặc các ngữ chỉ thời gian trong thì quá khứ hoàn thành. Mặc dù có thể dùng được nhưng hiếm khi cần phải dùng như vậy. </p>
+<p>Ví dụ:</p>
+<ul>
+<li>She had visited her Japanese relatives once in 1993 before she moved in with them in 1996.</li>
+</ul>
+<p>NGOÀI RA</p>
+<p>Nếu hành động của thì quá khứ hoàn thành xảy ra ở một thời điểm xác định, ta thay thế được bằng thì quá khứ đơn khi có từ "before" hoặc "after" được dùng. Do từ "before" và "after" đã nói được cho ta biết hành động nào xảy ra trước, hành động nào xảy ra sau nên việc dùng thì quá khứ hoàn thành đã không còn cần thiết nữa. Do đó, cả hai câu phía dưới đây đều đúng:</p>
+<ul>
+<li>She had visited her Japanese relatives once in 1993 before she moved in with them in 1996.</li>
+<li>She visited her Japanese relatives once in 1993 before she moved in with them in 1996.</li>
+</ul>
+<p>TUY NHIÊN</p>
+<p><img src="https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/454207908_8008511999229862_26624517056439759_n.jpg?_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=350b3d&amp;_nc_ohc=5M8cojkLNEMQ7kNvgH6QYJh&amp;_nc_zt=23&amp;_nc_ht=scontent.fhan17-1.fna&amp;_nc_gid=AT_6FzCmwitqkC6alU_Vurd&amp;oh=00_AYD2D3xLhVHZ-u52aJQnOMLE7B2kxQIQZfmgsTK0ZLHYkA&amp;oe=6761C4C3" alt="image" /></p>
+<p>Nếu thì quá khứ hoàn thành không dùng để chỉ một hành động ở một thời điểm xác định thì việc dùng thì quá khứ hoàn thành là bắt buộc. So sánh 2 ví dụ dưới đây. Ở đây, thì quá khứ hoàn thành dùng để chỉ sự thiếu kinh nghiệm chứ không phải là một hành động ở một thời điểm nhất định. Do đó, ta không thể dùng thì quá khứ đơn được.</p>
+<ul>
+<li>She never saw a bear before she moved to Alaska. <em>Không đúng.</em></li>
+<li>She had never seen a bear before she moved to Alaska. <em>Đúng</em></li>
+</ul>
+<p>Cách đặt adverb</p>
+<p>Những ví dụ dưới đây mô tả các đặt các adverb như: always, only, never, ever, still, just, v.v... vào một câu ở thì quá khứ hoàn thành:</p>
+<ul>
+<li>You had previously studied English before you moved to New York.</li>
+<li>Had you previously studied English before you moved to New York?</li>
+</ul>
+<p>CHỦ ĐỘNG/ BỊ ĐỘNG</p>
+<ul>
+<li>George had repaired many cars before he received his mechanic's license. <em>Chủ động</em></li>
+<li>Many cars had been repaired by George before he received his mechanic's license. <em>Bị động</em></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../word-level/dong-tu/qua-khu-tiep-dien.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../word-level/dong-tu/qua-khu-hoan-thanh-tiep-dien.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../word-level/dong-tu/qua-khu-tiep-dien.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../word-level/dong-tu/qua-khu-hoan-thanh-tiep-dien.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

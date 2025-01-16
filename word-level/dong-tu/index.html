@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Động từ và thì động từ - Tôi học ngữ pháp Tiếng Anh</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Tôi học ngữ pháp Tiếng Anh</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="tất-tần-tật-về-Động-từ-trong-tiếng-anh"><a class="header" href="#tất-tần-tật-về-Động-từ-trong-tiếng-anh">Tất tần tật về Động từ trong Tiếng Anh</a></h1>
+<p>!!! info "Định dạng bài viết"
+Có khá nhiều bài viết trong mục này chưa được chỉnh sửa lại định dạng. Số lượng bài viết trong mục này rất nhiều nên làm chưa xong. Khi nào xong toàn bộ bài viết thì thông báo này sẽ được xóa :D</p>
+<h2 id="Động-từ-là-gì"><a class="header" href="#Động-từ-là-gì">Động từ là gì?</a></h2>
+<p>Động từ là từ chỉ hành động (I <strong>speak</strong> English) và trạng thái (He <strong>seems</strong> normal).</p>
+<p>Động từ luôn đi cùng với chủ ngữ và động từ để chỉ hành động hoặc trạng thái của chủ ngữ.</p>
+<blockquote>
+<p>verbs are words that tell us what a subject does or is (<a href="https://www.englishclub.com/grammar/verb-what.php">EnglishClub</a>)</p>
+</blockquote>
+<h3 id="phân-loại-động-từ"><a class="header" href="#phân-loại-động-từ">Phân loại động từ</a></h3>
+<p>Động từ có hai loại: main verbs (Động từ chính hay "Động từ thường"), helping verbs (Hay còn gọi là trợ động từ).</p>
+<h4 id="trợ-động-từ"><a class="header" href="#trợ-động-từ">Trợ động từ</a></h4>
+<p>Hãy tưởng tượng đột nhiên một thằng cha nào đấy xuất hiện trước mặt bạn và nói:</p>
+<ul>
+<li>'I can'</li>
+<li>'I must'</li>
+<li>'I shouldn't'</li>
+</ul>
+<p>Bạn có hiểu gã ấy đang nói gì không? Chắc chắn là không. Những động từ ở trên được gọi là "helping verbs" hay trợ động từ và bản thân trợ động từ không có ý nghĩa, nhưng lại có vai trò quan trọng trong cấu trúc ngữ pháp của câu. Chúng đi cùng với động từ chính (main verbs) và bổ trợ cho động từ chính (trong câu, trợ động từ cần ít nhất một động từ chính). Chỉ có khoảng 15 trợ động từ.</p>
+<h4 id="Động-từ-chính"><a class="header" href="#Động-từ-chính">Động từ chính</a></h4>
+<p>Là động từ có ý nghĩa, kể cả khi đứng độc lập. Ví dụ như 'I speak', 'He teaches', 'People eat' chẳng hạn.</p>
+<p>Động từ chính còn có nhiều dạng nữa nhưng chắc là đề cập sau.</p>
+<h3 id="dạng-động-từ"><a class="header" href="#dạng-động-từ">Dạng động từ</a></h3>
+<p>Danh sách các dạng động từ bao gồm:</p>
+<ul>
+<li>base V1 (Dạng gốc)</li>
+<li>past simple V2 (Quá khứ phân từ 2)</li>
+<li><a href="https://flyer.vn/qua-khu-phan-tu/">past participle V3 (Quá khứ phân từ 3)</a></li>
+<li><a href="https://ielts.idp.com/vietnam/prepare/article-present-participle">present participle (Hiện tại phân từ)</a></li>
+<li>3rd person singular present simple (Hiện tại ngôi thứ 3)</li>
+</ul>
+<p>Trong bảng này, các ô được bỏ trống có nghĩa là dạng tiếp theo của nó cũng sẽ tương tự dạng trước. Ví dụ như từ "made" thì V2 và V3 đều là made nên ô ở V3 sẽ được bỏ trống.</p>
+<div class="table-wrapper"><table><thead><tr><th> </th><th>V1</th><th>V2</th><th>V3</th><th>present participle</th><th>3rd person singular present simple</th></tr></thead><tbody>
+<tr><td>Có quy tắc</td><td>work</td><td>worked</td><td></td><td>working</td><td>works</td></tr>
+<tr><td>Bất quy tắc</td><td>cut</td><td></td><td></td><td>cutting</td><td>cuts</td></tr>
+<tr><td></td><td>make</td><td>made</td><td></td><td>making</td><td>makes</td></tr>
+<tr><td></td><td>sing</td><td>sang</td><td>sung</td><td>singing</td><td>sings</td></tr>
+</tbody></table>
+</div>
+<p><a href="https://www.englishclub.com/grammar/verb-forms.php">Bảng được cắt từ EnglishClub</a>.</p>
+<h3 id="thì-tiếng-anh"><a class="header" href="#thì-tiếng-anh">Thì Tiếng Anh</a></h3>
+<h4 id="thì-trong-ngôn-ngữ-là-gì"><a class="header" href="#thì-trong-ngôn-ngữ-là-gì">Thì trong ngôn ngữ là gì?</a></h4>
+<p>Khi nói về thì thì không thể không nói đến <strong>time</strong> và <strong>aspect</strong>.</p>
+<p><strong>Time</strong> để chỉ:</p>
+<ul>
+<li><strong>quá khứ</strong> - trước <em>bây giờ</em></li>
+<li><strong>hiện tại</strong> - <em>bây giờ</em></li>
+<li><strong>tương lai</strong> - sau <em>bây giờ</em></li>
+</ul>
+<p><strong>Aspect</strong> để chỉ:</p>
+<ul>
+<li><strong>tiếp diễn</strong> - <em>uncompleted action</em></li>
+<li><strong>hoàn thành</strong> - <em>completed action or state</em></li>
+</ul>
+<p><img src="img/dong-tu-1.png" alt="" /></p>
+<h4 id="hệ-thống-thì-trong-tiếng-anh"><a class="header" href="#hệ-thống-thì-trong-tiếng-anh">Hệ thống thì trong Tiếng Anh</a></h4>
+<h4 id="12-thì-cơ-bản"><a class="header" href="#12-thì-cơ-bản">12 thì cơ bản</a></h4>
+<ul>
+<li>Thì hiện tại
+<ul>
+<li><a href="hien-tai-don.html">Đơn</a></li>
+<li><a href="hien-tai-tiep-dien.html">Tiếp diễn</a></li>
+<li><a href="hien-tai-hoan-thanh.html">Hoàn thành</a></li>
+<li><a href="hien-tai-hoan-thanh-tiep-dien.html">Hoàn thành tiếp diễn</a></li>
+</ul>
+</li>
+<li>Thì quá khứ
+<ul>
+<li><a href="qua-khu-don.html">Đơn</a></li>
+<li><a href="qua-khu-tiep-dien.html">Tiếp diễn</a></li>
+<li><a href="qua-khu-hoan-thanh.html">Hoàn thành</a></li>
+<li><a href="qua-khu-hoan-thanh-tiep-dien.html">Hoàn thành tiếp diễn</a></li>
+</ul>
+</li>
+<li>Thì tương lai
+<ul>
+<li><a href="tuong-lai-don.html">Đơn</a></li>
+<li><a href="tuong-lai-tiep-dien.html">Tiếp diễn</a></li>
+<li><a href="tuong-lai-hoan-thanh.html">Hoàn thành</a></li>
+<li><a href="tuong-lai-hoan-thanh-tiep-dien.html">Hoàn thành tiếp diễn</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="các-dạng-động-từ-trong-các-kiểu-câu-khác-nhau"><a class="header" href="#các-dạng-động-từ-trong-các-kiểu-câu-khác-nhau">Các dạng động từ trong các kiểu câu khác nhau</a></h3>
+<p><a href="going-to.html"><strong>going to</strong></a></p>
+<p>I am going to do it</p>
+<p><a href="about-to.html"><strong>about to</strong></a></p>
+<p>I am about to do it</p>
+<p><a href="for-va-since.html"><strong>for và since</strong></a></p>
+<p>for Time, for two days, since 1st April</p>
+<p><a href="subjunctive-mood.html"><strong>Subjunctive Mood</strong></a></p>
+<p><a href="chu-dong-bi-dong.html"><strong>Dạng bị động</strong></a>: Cats eat mice. Mice are eaten by cats.</p>
+<p><a href="used-to.html"><strong>be used to/used to do</strong></a></p>
+<p>I am not used to it. I used to do it.</p>
+<p><a href="future-time.html"><strong>Future Time</strong></a> - Chưa có bài viết</p>
+<p>I will do it. I am going to do it. I am doing it. I do it.</p>
+<p><strong>Câu điều kiện</strong>: if I win, if I won, if I had won</p>
+<ul>
+<li><a href="ban-chat-cau-dieu-kien.html">Bản chất của câu điều kiện</a></li>
+<li><a href="cau-dieu-kien.html">Các loại câu điều kiện</a></li>
+<li>Thì của động từ trong câu điều kiện</li>
+<li><a href="nhung-cach-khac-if.html">Những cách khác để diễn tả câu điều kiện</a></li>
+</ul>
+<p><a href="dong-tu-khuyet-thieu.html"><strong>Động từ khuyết thiếu</strong></a></p>
+<p>can, shall, must...</p>
+<p><a href="phrasal-verb-co-ban.html">Phrasal Verbs cơ bản</a></p>
+<p>put out, look after, get on with</p>
+<p><a href="cau-hoi.html"><strong>Câu hỏi</strong></a></p>
+<p>Do you like tea? Why do you like tea? Do you like tea or coffee?</p>
+<p><a href="cau-hoi-duoi.html"><strong>Câu hỏi đuôi - Tag Questions</strong></a></p>
+<p>You hate me, don't you?</p>
+<p><a href="s-v-argreement.html"><strong>Hòa hợp chủ ngữ - động từ</strong></a></p>
+<p>In general a subject and a verb must agree in number.</p>
+<h2 id="một-số-chủ-đề-khác"><a class="header" href="#một-số-chủ-đề-khác">Một số chủ đề khác</a></h2>
+<h3 id="thể-sai-khiến"><a class="header" href="#thể-sai-khiến"><a href="the-sai-khien.html">Thể sai khiến</a></a></h3>
+<p>Thể sai khiến được dùng để diễn tả một người nào đó đã giúp chúng ta thực hiện một công việc nào đó.</p>
+<!-- 
+[**Infinitive hay là -ing?**]()
+
+I like to do, I like doing
+
+[**Thì tiếp diễn và ý nghĩa**]
+
+Am I being silly?
+
+[**Dạng -ing**] 
+
+fishing is fun, I dislike working, after arriving
+ -->
+<!-- 
+Catenative Verbs
+
+Chains of two or more verbs: Let go. I want to play. He hates drinking.
+
+Complex Catenative Construction
+When a catenative verb has an object, the object usually comes between the catenative verb and second verb. 
+-->
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../word-level/parts-of-speech.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../word-level/dong-tu/hien-tai-don.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../word-level/parts-of-speech.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../word-level/dong-tu/hien-tai-don.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
