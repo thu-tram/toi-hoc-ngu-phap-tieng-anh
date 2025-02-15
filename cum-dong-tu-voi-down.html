@@ -1,0 +1,620 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>down - Pháp quyền Anh Ngữ</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Pháp quyền Anh Ngữ</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>title: "Phrasal verb with down: Tổng hợp các cụm thường gặp"
+source: https://zim.vn/phrasal-verb-down
+date: 2025-02-12 02:18
+tags:
+description: Bài viết giới thiệu các phrasal verb down thường gặp trong tiếng Anh và cung cấp bài tập kèm đáp án giúp người học luyện tập và vận dụng kiến thức</p>
+<p><a href="https://zim.vn/phrasal-verb-down">source</a></p>
+<h1 id="phrasal-verb-with-down-tổng-hợp-các-cụm-thường-gặp"><a class="header" href="#phrasal-verb-with-down-tổng-hợp-các-cụm-thường-gặp">Phrasal verb with down: Tổng hợp các cụm thường gặp</a></h1>
+<p>Key takeaways</p>
+<p>Giời từ "down" trong tiếng Anh thường chỉ chiều hướng đi xuống, từ nơi cao hơn xuống nơi thấp hơn. Down là một giới từ phổ biến, thường được kết hợp với các động từ thường để tạo thành <a href="https://zim.vn/phrasal-verb-la-gi">phrasal verb</a>.</p>
+<p>Bài viết giới thiệu các phrasal verb down thường gặp trong tiếng Anh: cut/chop down, weigh down, load down, hold down, come down, shut down, knock down, take down, crack down on, cut down on, let down, water down, ...</p>
+<h2 id="các-phrasal-verb-với-down"><a class="header" href="#các-phrasal-verb-với-down">Các phrasal verb với down</a></h2>
+<h3 id="cutchop-down"><a class="header" href="#cutchop-down">Cut/chop down</a></h3>
+<p>Nghĩa: chặt, đốn ...</p>
+<p>Phiên âm: /kʌt/ tʃɒp daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<p>|Cut/chop down somethingCut/chop something down|</p>
+<p>Ví dụ: The workers had to cut down the old tree in the park. <em>(Công nhân phải chặt những cái cây già trong công viên.)</em></p>
+<h3 id="weigh-down"><a class="header" href="#weigh-down">Weigh down</a></h3>
+<p>Nghĩa: mang, vác, gánh quá nhiều</p>
+<p>Phiên âm: /weɪ daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">be weighed down with sth</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ: He was weighed down with financial burdens. <em>(Anh ấy đã phải chịu những gánh nặng tài chính.)</em></p>
+<h3 id="load-down"><a class="header" href="#load-down">Load down</a></h3>
+<p>Nghĩa: mang, gánh vác nhiều</p>
+<p>Phiên âm: /loʊd daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">be weighed down with sth</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ: She felt loaded down with groceries after shopping. <em>(Cô ấy phải vác nhiều đồ sau khi đi mua sắm.)</em></p>
+<h3 id="take-down"><a class="header" href="#take-down">Take down</a></h3>
+<p>Nghĩa: viết xuống (điều mà một người nào đó nói) / tháo giỡ</p>
+<p>Phiên âm: /teɪk daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<p>|take down somethingtake something down|</p>
+<p>Ví dụ: He had to take down the decorations after the party. <em>(Anh ấy phải tháo giỡ đồ trang trí sau bữa tiệc)</em></p>
+<h3 id="write-down"><a class="header" href="#write-down">Write down</a></h3>
+<p>Nghĩa: viết vào giấy để không quên điều gì</p>
+<p>Phiên âm: /raɪt daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<p>|write down somethingwrite something down|</p>
+<p>Ví dụ: He always writes down his goals for the year. <em>(Anh ấy luôn viết vào giấy các mục tiêu trong năm của anh ấy.)</em></p>
+<h3 id="keep-down"><a class="header" href="#keep-down">Keep down</a></h3>
+<p>Nghĩa: kiểm soát, ngăn kích thước/số lượng tăng lên</p>
+<p>Phiên âm: /kiːp daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<p>|keep something downkeep down something|</p>
+<p>Ví dụ: The librarian asked everyone to keep down their voices. <em>(Thủ thư yêu cầu mọi người nói nhỏ tiếng.)</em></p>
+<h3 id="cut-down-on"><a class="header" href="#cut-down-on">Cut down on</a></h3>
+<p>Nghĩa: cắt bớt, giảm bớt, giảm tiêu thụ ...</p>
+<p>Phiên âm: /kʌt daʊn ɒn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">cut down on sth</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ: She decided to cut down on sugar to improve her health. <em>(Cô ấy quyết định giảm tiêu thụ đường để cải thiện sức khỏe.)</em></p>
+<h3 id="wear-down"><a class="header" href="#wear-down">Wear down</a></h3>
+<p>Nghĩa: làm mệt mỏi, yếu đi</p>
+<p>Phiên âm: /wɛər daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">wear sb down</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ: The constant stress began to wear him down. <em>(Áp lực kéo dài khiến anh ấy mệt mỏi.)</em></p>
+<h3 id="note-down"><a class="header" href="#note-down">Note down</a></h3>
+<p>Nghĩa: ghi chú</p>
+<p>Phiên âm: /noʊt daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<p>|note something downnote down something|</p>
+<p>Ví dụ: She noted down the key points from the presentation. <em>(Cô ấy đã ghi chú những ý chính từ phần thuyết trình)</em></p>
+<ol>
+<li><strong>blow down</strong>: (gió) quật ngã, quật đổ</li>
+</ol>
+<p>Phiên âm: /bloʊ daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<p>|blow down somethingblow something down|</p>
+<p>Ví dụ: The wind blew down the old fence. <em>(Cơn gió đã quật ngã hàng rào cũ kỹ)</em></p>
+<h3 id="crack-down-on"><a class="header" href="#crack-down-on">Crack down on</a></h3>
+<p>Nghĩa: Xử lý nghiêm, giải quyết</p>
+<p>Phiên âm: /kræk daʊn ɒn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">crack down on sth</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ: The government is trying to crack down on tax evasion. <em>(Chính phủ đang cố gắng xử lý nghiêm hành vi trốn thuế.)</em></p>
+<h3 id="hold-down"><a class="header" href="#hold-down">Hold down</a></h3>
+<p>Nghĩa: ngăn không cho di chuyển/làm gì hoặc giữ ở mức thấp (giá cả...)</p>
+<p>Phiên âm: /hoʊld daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">hold sb/sth down: ngăn không cho di chuyển/làm gì</th></tr></thead><tbody>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th style="text-align: left">hold down sth / hold sth down: giữ ở mức thấp (giá cả...)</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ: She refused to let anyone hold her down from achieving her dreams. <em>(Cô ấy không để ai có thể cản trở cô ấy đạt được ước mơ.)</em></p>
+<h3 id="come-down"><a class="header" href="#come-down">Come down</a></h3>
+<p>Nghĩa: (giá cả, nhiệt độ...) hạ thấp / (tòa nhà) bị phá bỏ</p>
+<p>Phiên âm: /kʌm daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">something comes down</th></tr></thead><tbody>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th style="text-align: left">come down to sb: truyền từ đời này sang đời khác, thế hệ này sang thế hệ khác</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ: The prices of vegetables have come down this season. <em>(Giá rau củ mùa này đã hạ xuống.)</em></p>
+<h3 id="knock-down"><a class="header" href="#knock-down">Knock down</a></h3>
+<p>Nghĩa: đánh gục, hạ gục ai hoặc hạ giá, hoặc thuyết phục ai đó hạ giá bán</p>
+<p>Phiên âm: /nɒk daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">knock sb down: đánh gục, hạ gục ai</th></tr></thead><tbody>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th style="text-align: left">knock sth/sb down to sth: hạ giá, hoặc thuyết phục ai đó hạ giá bán</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ: The seller wanted $15 but my mother knocked him down to just $10. <em>(Người bán muốn giá $15, nhưng mẹ tôi đã thuyết phục anh ta bán giá $10)</em></p>
+<h3 id="slam-down"><a class="header" href="#slam-down">Slam down</a></h3>
+<p>Nghĩa: ném, đập xuống</p>
+<p>Phiên âm: /slæm daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">slam down something</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ: He was so frustrated that he slammed down the phone after the call. <em>(Anh ấy bực mình đến mức đập điện thoại xuống sau cuộc gọi.)</em></p>
+<h3 id="turn-down"><a class="header" href="#turn-down">Turn down</a></h3>
+<p>Nghĩa: hạ thấp độ lớn của âm thanh, vặn nhỏ hoặc từ chối, bác bỏ</p>
+<p>Phiên âm: /tɜːrn daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">turn sth down/ turn down sth: hạ thấp độ lớn của âm thanh, vặn nhỏ</th></tr></thead><tbody>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th style="text-align: left">turn sb/sth down: từ chối, bác bỏ</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ:</p>
+<ul>
+<li>The baby is sleeping; please turn down the music. <em>(Em bé đang ngủ; làm ơn vặn nhỏ tiếng nhạc xuống)</em></li>
+<li>She decided to turn down his offer. <em>(Cô ấy quyết định từ chối lời đề nghị của anh ta.)</em></li>
+</ul>
+<h3 id="shout-down"><a class="header" href="#shout-down">Shout down</a></h3>
+<p>Nghĩa: la lớn, làm ồn để không nghe thấy ai đó nói</p>
+<p>Phiên âm: /ʃaʊt daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<p>|shout down sbshout sb down|</p>
+<p>Ví  dụ: The crowd shouted down the candidate during his speech. <em>(Đám đông la hét át tiếng của ứng cử viên trong bài nói của ông ấy.)</em></p>
+<h3 id="pin-down"><a class="header" href="#pin-down">Pin down</a></h3>
+<p>Nghĩa: tóm/giữ chặt ai không cho di chuyển hoặc hiểu/giải thích/xác định chính xác về cái gì</p>
+<p>Phiên âm: /pɪn daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">pin down sb / pin sb down: tóm/giữ chặt ai không cho di chuyển</th></tr></thead><tbody>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th style="text-align: left">pin sth down / pin down sth: hiểu/giải thích/xác định chính xác về cái gì</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ: They pinned him down on the floor until the police arrived. <em>(Họ tóm chặt anh ta lại cho đến khi cảnh sát đến.)</em></p>
+<h3 id="tie-down"><a class="header" href="#tie-down">Tie down</a></h3>
+<p>Nghĩa: trói chặt hoặc ngăn cản ai tự do làm gì</p>
+<p>Phiên âm: /taɪ daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">tie sb/sth down / tie down sb/sth: trói chặt</th></tr></thead><tbody>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th style="text-align: left">tie sb down: (nghĩa bóng) ngăn cản ai tự do làm gì</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ: She didn't want to tie herself down with a long-term commitment just yet. <em>(Cô ấy không muốn tự trói buộc bản thân với một cam kết lâu dài.)</em></p>
+<h3 id="go-down"><a class="header" href="#go-down">Go down</a></h3>
+<p>Nghĩa: được ghi nhớ, được tôn vinh hoặc được ai đón nhận, ủng hộ nhiệt tình</p>
+<p>Phiên âm: /ɡoʊ daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">go down (in history): được ghi nhớ, được tôn vinh</th></tr></thead><tbody>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th style="text-align: left">go down with sb: được ai đón nhận, ủng hộ nhiệt tình</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ: His last show went down really well. <em>(Chương trình gần nhất của ông ấy rất được đón nhận.)</em><br />
+<img src="https://media.zim.vn/66b3754d8525f75ac4a7b102/phrasal-verb-down-3.png" alt="" /></p>
+<h3 id="shut-down"><a class="header" href="#shut-down">Shut down</a></h3>
+<p>Nghĩa: tắt nguồn / dừng hoạt động (thiết bị, hoạt động kinh doanh...)</p>
+<p>Phiên âm: /ʃʌt daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<p>|shut down somethingshut something down|</p>
+<p>Ví dụ: You should shut down your laptop when not using it. <em>(Bạn nên tắt nguồn laptop khi không sử dụng)</em></p>
+<h3 id="get-down"><a class="header" href="#get-down">Get down</a></h3>
+<p>Nghĩa: làm ai đó buồn, thất vọng</p>
+<p>Phiên âm: /ɡɛt daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">get sb down</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví dụ: The constant rain is really getting me down. <em>(Cơn mưa triền miên khiến tôi thất vọng)</em></p>
+<h3 id="put-down"><a class="header" href="#put-down">Put down</a></h3>
+<p>Phiên âm /pʊt daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">put sth down: đặt thứ gì đó xuống một bề mặt</th></tr></thead><tbody>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th style="text-align: left">put s.o down (for sth/to do sth): ghi tên/ ghi danh ai đó vào một hoạt động/sự kiện</th></tr></thead><tbody>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th style="text-align: left">put s.o down: phê bình, chỉ trích ai</th></tr></thead><tbody>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th style="text-align: left">put sth down to sth: được xem như là ...</th></tr></thead><tbody>
+</tbody></table>
+</div><div class="table-wrapper"><table><thead><tr><th style="text-align: left">put (an animal) down: giết (con vật) vì nó bị ốm</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>Ví  dụ:</p>
+<ul>
+<li>He had his dog put down by a family doctor. <em>(Anh ấy nhờ bác sĩ gia đình giết chú chó của anh ấy)</em></li>
+<li>It's not fair to put him down in front of everyone for a mistake anyone could have made. *(Thật không công bằng khi chỉ trích anh ta trước mặt mọi người vì một lỗi mà ai cũng có thể mắc phải.) *</li>
+</ul>
+<h3 id="gun-down"><a class="header" href="#gun-down">Gun down</a></h3>
+<p>Nghĩa: bắn hạ</p>
+<p>Phiên âm: /ɡʌn daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<p>|gun sb downgun down sb|</p>
+<p>Ví  dụ: The notorious criminal was gunned down by the police. <em>(Tên tội phạm khét tiếng đã bị cảnh sát bắn hạ)</em></p>
+<h3 id="let-down"><a class="header" href="#let-down">Let down</a></h3>
+<p>Nghĩa: làm ai thất vọng hoặc (quần áo) làm cho dài hơn | (bong bóng, lốp xe...) thả khí</p>
+<p>Phiên âm: /let daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">let sb down: làm ai thất vọng</th></tr></thead><tbody>
+</tbody></table>
+</div>
+<p>| let sth down: (quần áo) làm cho dài hơn \ |  |
+|:------------------------------------------|</p>
+<p>Ví dụ: You won't let your parents down, will you? <em>(Bạn sẽ không làm bố mẹ thất vọng chứ, phải không?)</em></p>
+<h3 id="water-down"><a class="header" href="#water-down">Water down</a></h3>
+<p>Nghĩa: pha loãng (dung dịch, chất lỏng) / làm giảm hiệu lực, hiệu quả của thứ gì</p>
+<p>Phiên âm: /ˈwɔːtər daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Cấu trúc</p>
+<p>|water down somethingwater something down|</p>
+<p>Ví dụ: The politician's speech was watered down to avoid offending any particular group. <em>(Lời nói của chính trị gia đã được nói giảm đi nhằm tránh đụng chạm đến bất kỳ nhóm nào.)</em></p>
+<h3 id="slow-down"><a class="header" href="#slow-down">Slow down</a></h3>
+<p>Nghĩa: đi/chạy chậm lại</p>
+<p>Phiên âm: /sləʊ daʊn/ <img src="https://media.zim.vn/63f5bb9123aba4ce9e646906/fontawesome5solidvolume-up.svg" alt="" /></p>
+<p>Ví dụ: Please slow down; you are driving too fast! <em>(Xin hãy đi chậm lại, bạn đang lái quá nhanh rồi đấy.)</em></p>
+<p><strong>Xem thêm:</strong></p>
+<ul>
+<li><a href="https://zim.vn/phrasal-verb-do">Phrasal Verb Do</a></li>
+<li><a href="https://zim.vn/phrasal-verb-up">Phrasal verb với Up</a></li>
+<li><a href="https://zim.vn/phrasal-verb-keep">Phrasal Verb Keep</a></li>
+<li><a href="https://zim.vn/phrasal-verb-voi-take">Phrasal verb take</a></li>
+<li><a href="https://zim.vn/phrasal-verb-put#phrasal-verb-put-th%C3%B4ng-d%E1%BB%A5ng-0-0">Phrasal verb put</a></li>
+</ul>
+<h2 id="bài-tập-vận-dụng-phrasal-verb-down"><a class="header" href="#bài-tập-vận-dụng-phrasal-verb-down"><strong>Bài tập vận dụng phrasal verb down</strong></a></h2>
+<p><strong>Bài tập 1: Nối các phrasal verb down sau với định nghĩa phù hợp</strong></p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left"><strong>Phrasal verb</strong></th><th style="text-align: left"><strong>Định nghĩa</strong></th></tr></thead><tbody>
+<tr><td style="text-align: left">Let down</td><td style="text-align: left">A. To take severe measures against something or someone</td></tr>
+<tr><td style="text-align: left">Note down</td><td style="text-align: left">B. To stop the operation of something, usually a machine or business</td></tr>
+<tr><td style="text-align: left">Gun down</td><td style="text-align: left">C. To write something down so that you do not forget it</td></tr>
+<tr><td style="text-align: left">Hold down</td><td style="text-align: left">D. To make someone or something heavy and difficult to move</td></tr>
+<tr><td style="text-align: left">Crack down on</td><td style="text-align: left">E. To cause something to fall by blowing, usually referring to wind</td></tr>
+<tr><td style="text-align: left">Blow down</td><td style="text-align: left">F. To shoot someone, especially killing or seriously injuring them</td></tr>
+<tr><td style="text-align: left">Shut down</td><td style="text-align: left">G. To cut through the trunk of a tree to make it fall</td></tr>
+<tr><td style="text-align: left">Chop down</td><td style="text-align: left">H. To disappoint someone by failing to do what they expected or hoped for</td></tr>
+<tr><td style="text-align: left">Weigh down</td><td style="text-align: left">I. To hit or push someone or something so that they fall to the ground</td></tr>
+<tr><td style="text-align: left">Knock down</td><td style="text-align: left">J. To keep something in place or under control</td></tr>
+</tbody></table>
+</div>
+<p>Đáp án: 1-H; 2-C; 3-F; 4-J; 5-A; 6-E; 7-B; 8-G; 9-D; 10-I</p>
+<p><strong>Bài tập 2: Điền các động từ thích hợp được cho trong bảng sau vào chỗ trống để tạo thành phrasal verb down (Chú ý điền thì phù hợp)</strong></p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: left">shut</th><th style="text-align: left">go</th><th style="text-align: left">crack</th><th style="text-align: left">blow</th><th style="text-align: left">load</th></tr></thead><tbody>
+<tr><td style="text-align: left">tie</td><td style="text-align: left">put</td><td style="text-align: left">write</td><td style="text-align: left">water</td><td style="text-align: left">knock</td></tr>
+</tbody></table>
+</div>
+<ol>
+<li>
+<p>They ___ the success down to hard work.</p>
+</li>
+<li>
+<p>The website was ___ down for maintenance.</p>
+</li>
+<li>
+<p>The boxer ___ down his opponent in the first round.</p>
+</li>
+<li>
+<p>Her achievements will ___ down in history.</p>
+</li>
+<li>
+<p>The strong winds ___ down several trees in the park.</p>
+</li>
+<li>
+<p>You need to ___ down the juice; it's too strong.</p>
+</li>
+<li>
+<p>___ down the recipe so you can try it later.</p>
+</li>
+<li>
+<p>She was ___ down with shopping bags.</p>
+</li>
+<li>
+<p>He doesn't want to be ___ down by a long-term contract.</p>
+</li>
+<li>
+<p>The police are ___ down on drug trafficking.</p>
+</li>
+</ol>
+<p><strong>Đáp án</strong></p>
+<ol>
+<li>
+<p>put</p>
+</li>
+<li>
+<p>shut</p>
+</li>
+<li>
+<p>knocked</p>
+</li>
+<li>
+<p>go</p>
+</li>
+<li>
+<p>blew</p>
+</li>
+<li>
+<p>water</p>
+</li>
+<li>
+<p>Write</p>
+</li>
+<li>
+<p>loaded</p>
+</li>
+<li>
+<p>tied</p>
+</li>
+<li>
+<p>cracking</p>
+</li>
+</ol>
+<p><strong>Bài tập 3: Viết lại các câu sau sử dụng phrasal verb down được gợi ý</strong></p>
+<ol>
+<li>
+<p>I've decided to reduce my intake of sugar to improve my health. (Cut down on)</p>
+</li>
+<li>
+<p>He promised to help but ended up disappointing me. (Let down)</p>
+</li>
+<li>
+<p>Can you identify exactly the main points of your argument? (Pin down)</p>
+</li>
+<li>
+<p>The old building will be demolished next week to make way for a new park. (Come down)</p>
+</li>
+<li>
+<p>The new policy wasn't well-received by the employees. (Go down)</p>
+</li>
+<li>
+<p>She had to reject the job offer because it was too far from home. (Turn down)</p>
+</li>
+<li>
+<p>She managed to persuade the seller to accept a reasonable price. (Knock down)</p>
+</li>
+<li>
+<p>The long hours at work are starting to exhaust me. (Wear down)</p>
+</li>
+<li>
+<p>He always tries to criticize others to make himself feel better. (Put down)</p>
+</li>
+<li>
+<p>The audience tried to scream so that no one could hear the controversial speaker. (Shout down)</p>
+</li>
+</ol>
+<p>Đáp án</p>
+<ol>
+<li>
+<p>I've decided to cut down on sugar to improve my health. <em>(Tôi đã quyết định cắt giảm lượng đường để cải thiện sức khỏe của mình.)</em></p>
+</li>
+<li>
+<p>He promised to help but ended up letting me down. <em>(Anh ấy hứa sẽ giúp đỡ nhưng cuối cùng lại khiến tôi thất vọng.)</em></p>
+</li>
+<li>
+<p>Can you pin down the main points of your argument? <em>(Bạn có thể xác định rõ các điểm chính trong lập luận của mình không?)</em></p>
+</li>
+<li>
+<p>The old building will come down next week to make way for a new park. <em>(Tòa nhà cũ sẽ sụp đổ vào tuần tới để nhường chỗ cho một công viên mới.)</em></p>
+</li>
+<li>
+<p>The new policy didn't go down well with the employees. <em>(Chính sách mới không được nhân viên đón nhận.)</em></p>
+</li>
+<li>
+<p>She had to turn down the job offer because it was too far from home. <em>(Cô ấy phải từ chối lời mời làm việc vì nó quá xa nhà)</em></p>
+</li>
+<li>
+<p>She managed to knock the seller down to a reasonable price. <em>(Cô ấy đã thương lượng được với người bán để có giá hợp lý.)</em></p>
+</li>
+<li>
+<p>The long hours at work are starting to wear me down. <em>(Giờ làm việc kéo dài đang bắt đầu làm tôi kiệt sức.)</em></p>
+</li>
+<li>
+<p>He always tries to put others down to make himself feel better. (Anh ấy luôn cố gắng chỉ trích người khác để cảm thấy tốt hơn.)</p>
+</li>
+<li>
+<p>The audience tried to shout down the controversial speaker. <em>(Khán giả đã cố gắng la hét để át tiếng diễn giả gây tranh cãi.)</em></p>
+</li>
+</ol>
+<h2 id="tổng-kết"><a class="header" href="#tổng-kết"><strong>Tổng kết</strong></a></h2>
+<p>Bài viết trên đã giới thiệu các phrasal verb phổ biến với giới từ "down" trong tiếng Anh, kèm theo bài tập vận dụng. Mong rằng các kiến thức và bài tập trên sẽ giúp ích cho người học trong việc hiểu rõ và áp dụng hiệu quả phrasal verb down trong quá trình sử dụng tiếng Anh.</p>
+<p>Trong quá trình học tập và rèn luyện, người học có thể truy cập <a href="https://zim.vn/forum">ZIM Helper</a>, nền tảng hỗ trợ thắc mắc, chữa bài tập bởi đội ngũ Giảng viên chuyên môn có nhiều kinh nghiệm tại ZIM.</p>
+<p>Nguồn tham khảo</p>
+<p>McCarthy, Michael, and Felicity O'Dell. <em>English Phrasal Verbs in Use: Advanced</em>. 2007; <em>English Phrasal Verbs in Use Intermediate</em>. Cambridge UP, 2004.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="cum-dong-tu-voi-up.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="cum-dong-tu-voi-away.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="cum-dong-tu-voi-up.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="cum-dong-tu-voi-away.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
